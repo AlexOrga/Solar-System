@@ -4,8 +4,8 @@ const printToDom = (divID, string) => {
 
 // ***************** Solar System Setup *****************************
 
-const dwarfPlanet = (nameOfPlanet) => {
-    domString = `<div class="card">`;
+const dwarfPlanet = (nameOfPlanet, index) => {
+    domString = `<div class="card" id="${index}">`;
     domString +=    `<h3 class="planetName">${nameOfPlanet.name}</h3>`;
     domString +=    `<img class="hidden" src="${nameOfPlanet.imageUrl}">`;
     domString += `</div>`;
@@ -16,12 +16,30 @@ const buildSolarSystem = (planetArray) => {
     let solarSystem = '';
     for (i=0; i<planetArray.length; i++){
         let planetData = planetArray[i];
-        solarSystem += dwarfPlanet(planetData);
+        solarSystem += dwarfPlanet(planetData, i);
     }
     printToDom("milky-way", solarSystem);
 };
 
 //*************** Single Planet Card ******************************** 
+
+const buildPlanet = (array, index) => {
+    let domString = '';
+        domString += `<div>`;
+        domString +=    `<img id="red-x" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Antu_task-reject.svg/512px-Antu_task-reject.svg.png">`;
+        domString +=    `<h1>${array[index].name}</h1>`;
+        domString +=    `<img src="${array[index].imageUrl}">`;
+        domString +=    `<p>${array[index].description}</p>`;
+        domString +=    `<h5>Number of Moons: ${array[index].numberOfMoons}</h5>`;
+        domString +=    `<h5>Name of Largest Moon: `;
+        if(array[index].nameOfLargestMoon === ""){
+            domString += `This planet has no moons</h5>`;
+        } else {
+            domString += `${array[index].nameOfLargestMoon}</h5>`
+        };
+        domString += `</div>`;
+    printToDom("milky-way", domString);
+};
 
 
 // ************** Event Listeners On Solar System ********************
@@ -52,10 +70,17 @@ const hoverPlanet = () => {
     }
 };
 
-const clickPlanet = () => {
+const clickPlanet = (array) => {
     const clickElement = document.getElementsByClassName("card");
     for (i=0; i<clickElement.length; i++){
-        clickElement[i].addEventListener('click', buildPlanet);
+        clickElement[i].addEventListener('click', (e) => {
+            let eventPosition = e.target;
+            while(eventPosition.className != "card"){
+                eventPosition = eventPosition.parentNode;
+            }
+            eventPosition = eventPosition.id * 1;
+            buildPlanet(array, eventPosition);
+        });
     }
 };
 
@@ -63,8 +88,8 @@ const clickPlanet = () => {
 
 function fileLoaded2 () {
     const data2 = JSON.parse(this.responseText);
-    buildPlanet(data2.planets);
-    killPlanet();
+    clickPlanet(data2.planets);
+    // killPlanet();
 }
 
 const xhrDos = () => {
@@ -85,7 +110,6 @@ function fileLoaded() {
     const data = JSON.parse(this.responseText);
     buildSolarSystem(data.planets);
     hoverPlanet();
-    // clickPlanet();
 }
 
 const startApplication = () => {
@@ -97,3 +121,4 @@ const startApplication = () => {
 }
 
 startApplication();
+xhrDos();
