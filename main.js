@@ -22,6 +22,19 @@ const buildSolarSystem = (planetArray) => {
 const showImage = (e) => {
     const getCard = document.getElementsByClassName("card");
     getCard.innerHTML = `<img src=`
+
+const hoverPlanet = () => {
+    const hoverElement = document.getElementsByClassName("card");
+    for (i=0; i<hoverElement.length; i++){
+        hoverElement[i].addEventListener('mouseover', showImage);
+    }
+};
+
+const clickPlanet = () => {
+    const clickElement = document.getElementsByClassName("card");
+    for (i=0; i<clickElement.length; i++){
+        clickElement[i].addEventListener('click', buildPlanet);
+    }
 };
 
 function fileError() {
