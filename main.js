@@ -1,20 +1,23 @@
 const printToDom = (divID, string) => {
-    document.getElementById(divId).innerHTML = string;
-}
+    document.getElementById(divID).innerHTML = string;
+};
 
-const dwarfPlanet = (planet) => {
-    domString = `<div class="card">`
-    domString +=    `<h3>${planet.name}</h3>`;
-    domString += `</div>`
-}
+const dwarfPlanet = (nameOfPlanet) => {
+    domString = `<div class="card">`;
+    domString +=    `<h3>${nameOfPlanet}</h3>`;
+    domString += `</div>`;
+    return domString;
+};
 
 const buildSolarSystem = (planetArray) => {
     let solarSystem = '';
     for (i=0; i<planetArray.length; i++){
-        let planetName = planetArray[i];
-        solarSystem += dwarfPlanet(planetArray);
+        let planetData = planetArray[i];
+        let planetName = planetData.name;
+        solarSystem += dwarfPlanet(planetName);
     }
-}
+    printToDom("milky-way", solarSystem);
+};
 
 function fileError() {
     console.log("There was an error");
@@ -22,9 +25,9 @@ function fileError() {
 
 function fileLoaded() {
     const data = JSON.parse(this.responseText);
-    buildSolarSystem(planets.json);
-    hoverPlanet();
-    clickPlanet();
+    buildSolarSystem(data.planets);
+    // hoverPlanet();
+    // clickPlanet();
 }
 
 const startApplication = () => {
@@ -34,3 +37,5 @@ const startApplication = () => {
     myRequest.open("GET", "planets.json");
     myRequest.send();
 }
+
+startApplication();
