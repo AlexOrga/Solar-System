@@ -4,7 +4,8 @@ const printToDom = (divID, string) => {
 
 const dwarfPlanet = (nameOfPlanet) => {
     domString = `<div class="card">`;
-    domString +=    `<h3>${nameOfPlanet}</h3>`;
+    domString +=    `<h3 class="planetName">${nameOfPlanet.name}</h3>`;
+    domString +=    `<img class="hidden" src="${nameOfPlanet.imageUrl}">`;
     domString += `</div>`;
     return domString;
 };
@@ -13,20 +14,25 @@ const buildSolarSystem = (planetArray) => {
     let solarSystem = '';
     for (i=0; i<planetArray.length; i++){
         let planetData = planetArray[i];
-        let planetName = planetData.name;
-        solarSystem += dwarfPlanet(planetName);
+        solarSystem += dwarfPlanet(planetData);
     }
     printToDom("milky-way", solarSystem);
 };
 
 const showImage = (e) => {
-    const getCard = document.getElementsByClassName("card");
-    getCard.innerHTML = `<img src=`
+    let div = e.target;
+    while(div.className != "card"){
+        div = div.parentNode;
+    }
+    div.children[0].className = 'hidden';
+    div.children[1].className = '';
+}
 
 const hoverPlanet = () => {
     const hoverElement = document.getElementsByClassName("card");
     for (i=0; i<hoverElement.length; i++){
         hoverElement[i].addEventListener('mouseover', showImage);
+        hoverElement[i].addEventListener('mouseleave', dwarfPlanet)
     }
 };
 
@@ -44,7 +50,7 @@ function fileError() {
 function fileLoaded() {
     const data = JSON.parse(this.responseText);
     buildSolarSystem(data.planets);
-    // hoverPlanet();
+    hoverPlanet();
     // clickPlanet();
 }
 
