@@ -21,6 +21,9 @@ const buildSolarSystem = (planetArray) => {
     printToDom("milky-way", solarSystem);
 };
 
+//*************** Single Planet Card ******************************** 
+
+
 // ************** Event Listeners On Solar System ********************
 
 const showImage = (e) => {
@@ -63,6 +66,14 @@ function fileLoaded2 () {
     buildPlanet(data2.planets);
     killPlanet();
 }
+
+const xhrDos = () => {
+    let myRequest2 = new XMLHttpRequest();
+    myRequest2.addEventListener("load", fileLoaded2);
+    myRequest2.addEventListener("error", fileError);
+    myRequest2.open("GET", "planets.json");
+    myRequest2.send();
+};
 
 //************************* First XHR Request ******************
 
