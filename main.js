@@ -26,6 +26,13 @@ const hoverPlanet = () => {
     }
 };
 
+const clickPlanet = () => {
+    const clickElement = document.getElementsByClassName("card");
+    for (i=0; i<clickElement.length; i++){
+        clickElement[i].addEventListener('click', buildPlanet);
+    }
+};
+
 function fileError() {
     console.log("There was an error");
 }
