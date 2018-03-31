@@ -1,4 +1,8 @@
-const fileLoaded = () => {
+function fileError() {
+    console.log("There was an error");
+}
+
+function fileLoaded() {
     const data = JSON.parse(this.responseText);
     buildSolarSystem(planets.json);
     hoverPlanet();
