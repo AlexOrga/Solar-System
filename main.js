@@ -2,6 +2,10 @@ const printToDom = (divID, string) => {
     document.getElementById(divId).innerHTML = string;
 }
 
+const dwarfPlanet = (planet) => {
+    domString = `<h3>${planet.name}</h3>`;
+}
+
 function fileError() {
     console.log("There was an error");
 }
