@@ -3,7 +3,17 @@ const printToDom = (divID, string) => {
 }
 
 const dwarfPlanet = (planet) => {
-    domString = `<h3>${planet.name}</h3>`;
+    domString = `<div class="card">`
+    domString +=    `<h3>${planet.name}</h3>`;
+    domString += `</div>`
+}
+
+const buildSolarSystem = (planetArray) => {
+    let solarSystem = '';
+    for (i=0; i<planetArray.length; i++){
+        let planetName = planetArray[i];
+        solarSystem += dwarfPlanet(planetArray);
+    }
 }
 
 function fileError() {
