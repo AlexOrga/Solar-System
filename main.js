@@ -1,3 +1,7 @@
+const printToDom = (divID, string) => {
+    document.getElementById(divId).innerHTML = string;
+}
+
 function fileError() {
     console.log("There was an error");
 }
