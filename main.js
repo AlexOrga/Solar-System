@@ -19,6 +19,13 @@ const buildSolarSystem = (planetArray) => {
     printToDom("milky-way", solarSystem);
 };
 
+const hoverPlanet = () => {
+    const hoverElement = document.getElementsByClassName("card");
+    for (i=0; i<hoverElement.length; i++){
+        hoverElement[i].addEventListener('mouseover', showImage);
+    }
+};
+
 function fileError() {
     console.log("There was an error");
 }
