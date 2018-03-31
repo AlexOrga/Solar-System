@@ -4,8 +4,8 @@ const printToDom = (divID, string) => {
 
 // ***************** Solar System Setup *****************************
 
-const dwarfPlanet = (nameOfPlanet) => {
-    domString = `<div class="card">`;
+const dwarfPlanet = (nameOfPlanet, index) => {
+    domString = `<div class="card" id="${index}">`;
     domString +=    `<h3 class="planetName">${nameOfPlanet.name}</h3>`;
     domString +=    `<img class="hidden" src="${nameOfPlanet.imageUrl}">`;
     domString += `</div>`;
@@ -16,13 +16,20 @@ const buildSolarSystem = (planetArray) => {
     let solarSystem = '';
     for (i=0; i<planetArray.length; i++){
         let planetData = planetArray[i];
-        solarSystem += dwarfPlanet(planetData);
+        solarSystem += dwarfPlanet(planetData, i);
     }
     printToDom("milky-way", solarSystem);
 };
 
 //*************** Single Planet Card ******************************** 
 
+const buildPlanet = (e) => {
+    let position = e.target.id;
+    // while(e.target.className != "card"){
+    //     position = e.target.parentNode.id;
+    // }
+    console.log("position", position);
+};
 
 // ************** Event Listeners On Solar System ********************
 
@@ -55,7 +62,10 @@ const hoverPlanet = () => {
 const clickPlanet = () => {
     const clickElement = document.getElementsByClassName("card");
     for (i=0; i<clickElement.length; i++){
-        clickElement[i].addEventListener('click', buildPlanet);
+        clickElement[i].addEventListener('click', (e) => {
+            debugger;
+            console.log("e", e);
+        });
     }
 };
 
@@ -85,7 +95,7 @@ function fileLoaded() {
     const data = JSON.parse(this.responseText);
     buildSolarSystem(data.planets);
     hoverPlanet();
-    // clickPlanet();
+    clickPlanet();
 }
 
 const startApplication = () => {
