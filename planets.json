@@ -1,0 +1,76 @@
+{
+    "planets": [
+        {
+            "name": "Mercury",
+            "imageUrl": "images/mercury.jpg",
+            "description": "Mercury is the smallest and innermost planet in the Solar System. Its orbital period around the Sun of 87.97 days is the shortest of all the planets in the Solar System. It is named after the Roman deity Mercury, the messenger of the gods.",
+            "isGasPlanet": false,
+            "numberOfMoons": 0,
+            "nameOfLargestMoon": ""
+        },
+        {
+            "name": "Venus",
+            "imageUrl": "images/venus.jpg",
+            "description": "Venus is the second planet from the Sun and is the second brightest object in the night sky after the Moon. Named after the Roman goddess of love and beauty, Venus is the second largest terrestrial planet and is sometimes referred to as the Earth's sister planet due the their similar size and mass.",
+            "isGasPlanet": false,
+            "numberOfMoons": 0,
+            "nameOfLargestMoon": ""
+        },
+        {
+            "name": "Earth",
+            "imageUrl": "images/earth.jpg",
+            "description": "Earth, our home, is the third planet from the sun. It is the only planet known to have an atmosphere containing free oxygen, oceans of liquid water on its surface, and, of course, life. ... About a fifth of Earth's atmosphere is made up of oxygen, produced by plants.",
+            "isGasPlanet": false,
+            "numberOfMoons": 1,
+            "nameOfLargestMoon": "Luna"
+        },
+        {
+            "name": "Mars",
+            "imageUrl": "images/mars.jpg",
+            "description": "Mars is the fourth planet from the Sun and is the second smallest planet in the solar system. Named after the Roman god of war, Mars is also often described as the “Red Planet” due to its reddish appearance. Mars is a terrestrial planet with a thin atmosphere composed primarily of carbon dioxide.",
+            "isGasPlanet": false,
+            "numberOfMoons": 2,
+            "nameOfLargestMoon": "Deimos"
+        },
+        {
+            "name": "Jupiter",
+            "imageUrl": "images/jupiter.jpg",
+            "description": "Jupiter is called a gas giant planet. Its atmosphere is made up of mostly hydrogen gas and helium gas, like the sun. The planet is covered in thick red, brown, yellow and white clouds.",
+            "isGasPlanet": true,
+            "numberOfMoons": 69,
+            "nameOfLargestMoon": "Ganymede"
+        },
+        {
+            "name": "Saturn",
+            "imageUrl": "images/saturn.jpg",
+            "description": "Physical characteristics of Saturn. Saturn is a gas giant made up mostly of hydrogen and helium. Saturn is big enough to hold more than 760 Earths, and is more massive than any other planet except Jupiter, roughly 95 times Earth's mass.",
+            "isGasPlanet": true,
+            "numberOfMoons": 62,
+            "nameOfLargestMoon": "Titan"
+        },
+        {
+            "name": "Uranus",
+            "imageUrl": "images/uranus.jpg",
+            "description": "The planet is often dubbed an ice giant, since 80 percent or more of its mass is made up of a fluid mix of water, methane, and ammonia ices. Unlike the other planets of the solar system, Uranus is tilted so far that it essentially orbits the sun on its side, with the axis of its spin nearly pointing at the star.",
+            "isGasPlanet": true,
+            "numberOfMoons": 27,
+            "nameOfLargestMoon": "Titania"
+        },
+        {
+            "name": "Neptune",
+            "imageUrl": "images/neptune.jpg",
+            "description": "Despite being smaller than Uranus, Neptune has a greater mass. Below its heavy atmosphere, Uranus is made of layers of hydrogen, helium, and methane gases. They enclose a layer of water, ammonia and methane ice. The inner core of the planet is made of rock.",
+            "isGasPlanet": true,
+            "numberOfMoons": 14,
+            "nameOfLargestMoon": "Triton"
+        },
+        {
+            "name": "Pluto",
+            "imageUrl": "images/pluto2.jpg",
+            "description": "Pluto (minor-planet designation: 134340 Pluto) is a dwarf planet in the Kuiper belt, a ring of bodies beyond Neptune. It was the first Kuiper belt object to be discovered. ... That definition excluded Pluto and reclassified it as a dwarf planet.",
+            "isGasPlanet": false,
+            "numberOfMoons": 5,
+            "nameOfLargestMoon": "Charon"
+        }
+    ]
+}
