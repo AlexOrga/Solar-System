@@ -28,11 +28,20 @@ const showImage = (e) => {
     div.children[1].className = '';
 }
 
+const undoShowImage = (e) => {
+    let div = e.target;
+    while(div.className != "card"){
+        div = div.parentNode;
+    }
+    div.children[0].className = '';
+    div.children[1].className = 'hidden';
+}
+
 const hoverPlanet = () => {
     const hoverElement = document.getElementsByClassName("card");
     for (i=0; i<hoverElement.length; i++){
         hoverElement[i].addEventListener('mouseover', showImage);
-        hoverElement[i].addEventListener('mouseleave', dwarfPlanet)
+        hoverElement[i].addEventListener('mouseleave', undoShowImage);
     }
 };
 
