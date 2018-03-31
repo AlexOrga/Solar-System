@@ -80,8 +80,14 @@ const clickPlanet = (array) => {
             }
             eventPosition = eventPosition.id * 1;
             buildPlanet(array, eventPosition);
+            killPlanet();
         });
     }
+};
+
+const killPlanet = () => {
+    const getX = document.getElementById("red-x");
+    getX.addEventListener('click', startApplication);
 };
 
 // ************************ Second XHR Request *****************
@@ -89,7 +95,6 @@ const clickPlanet = (array) => {
 function fileLoaded2 () {
     const data2 = JSON.parse(this.responseText);
     clickPlanet(data2.planets);
-    // killPlanet();
 }
 
 const xhrDos = () => {
