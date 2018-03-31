@@ -2,6 +2,8 @@ const printToDom = (divID, string) => {
     document.getElementById(divID).innerHTML = string;
 };
 
+// ***************** Solar System Setup *****************************
+
 const dwarfPlanet = (nameOfPlanet) => {
     domString = `<div class="card">`;
     domString +=    `<h3 class="planetName">${nameOfPlanet.name}</h3>`;
@@ -18,6 +20,8 @@ const buildSolarSystem = (planetArray) => {
     }
     printToDom("milky-way", solarSystem);
 };
+
+// ************** Event Listeners On Solar System ********************
 
 const showImage = (e) => {
     let div = e.target;
@@ -51,6 +55,16 @@ const clickPlanet = () => {
         clickElement[i].addEventListener('click', buildPlanet);
     }
 };
+
+// ************************ Second XHR Request *****************
+
+function fileLoaded2 () {
+    const data2 = JSON.parse(this.responseText);
+    buildPlanet(data2.planets);
+    killPlanet();
+}
+
+//************************* First XHR Request ******************
 
 function fileError() {
     console.log("There was an error");
