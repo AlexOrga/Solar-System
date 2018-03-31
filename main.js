@@ -19,6 +19,11 @@ const buildSolarSystem = (planetArray) => {
     printToDom("milky-way", solarSystem);
 };
 
+const showImage = (e) => {
+    const getCard = document.getElementsByClassName("card");
+    getCard.innerHTML = `<img src=`
+};
+
 function fileError() {
     console.log("There was an error");
 }
