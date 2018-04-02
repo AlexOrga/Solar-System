@@ -90,11 +90,44 @@ const killPlanet = () => {
     getX.addEventListener('click', startApplication);
 };
 
+// ************************ Search Bar ********************
+
+// const searchEvent = () => {
+//     let getSearch = document.getElementById("search-bar");
+//     getSearch.addEventListener('keypress', function (e) {
+//         var key = e.which || e.keyCode;
+//         if (key === 13) { 
+//             searchBar();
+//         }
+//     });
+// };
+
+// const searchBar = (array) => {
+//     const dataToCompare = array;
+//     let userInput = document.getElementById("search-bar").value;
+//     userInput = userInput.split(' ');
+//     userInput.forEach((input) => {
+//         filterResults(dataToCompare, userInput);
+//     });
+//     console.log("userInput: ", userInput);
+// };
+
+const filterResults = (arr, searchKey) => {
+    return arr.filter((obj) => {
+      return Object.keys(obj).some((key) => {
+        if (typeof obj[key] === 'string') {
+            return obj[key].toLowerCase().includes(searchKey.toLowerCase());
+        }
+      })
+    });
+  } 
+
 // ************************ Second XHR Request *****************
 
 function fileLoaded2 () {
     const data2 = JSON.parse(this.responseText);
     clickPlanet(data2.planets);
+    // searchEvent();
 }
 
 const xhrDos = () => {
@@ -113,8 +146,10 @@ function fileError() {
 
 function fileLoaded() {
     const data = JSON.parse(this.responseText);
+    console.log("Find 'is': ", filterResults(data.planets, "is"));
     buildSolarSystem(data.planets);
     hoverPlanet();
+    // searchEvent();
 }
 
 const startApplication = () => {
