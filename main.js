@@ -92,15 +92,16 @@ const killPlanet = () => {
 
 // ************************ Search Bar ********************
 
-// const searchEvent = () => {
-//     let getSearch = document.getElementById("search-bar");
-//     getSearch.addEventListener('keypress', function (e) {
-//         var key = e.which || e.keyCode;
-//         if (key === 13) { 
-//             searchBar();
-//         }
-//     });
-// };
+const searchEvent = (array) => {
+    let getSearch = document.getElementById("search-bar");
+    getSearch.addEventListener('keypress', function (e) {
+        var key = e.which || e.keyCode;
+        if (key === 13) { 
+            getSearch = getSearch.value;
+            filterResults(array, getSearch);
+        }
+    });
+};
 
 // const searchBar = (array) => {
 //     const dataToCompare = array;
@@ -112,11 +113,12 @@ const killPlanet = () => {
 //     console.log("userInput: ", userInput);
 // };
 
-const filterResults = (arr, searchKey) => {
-    return arr.filter((obj) => {
+const filterResults = (array, searchKey) => {
+    return array.filter((obj) => {
       return Object.keys(obj).some((key) => {
         if (typeof obj[key] === 'string') {
-            return obj[key].toLowerCase().includes(searchKey.toLowerCase());
+            let returned = obj[key].toLowerCase().includes(searchKey.toLowerCase());
+            console.log(returned);
         }
       })
     });
@@ -127,7 +129,7 @@ const filterResults = (arr, searchKey) => {
 function fileLoaded2 () {
     const data2 = JSON.parse(this.responseText);
     clickPlanet(data2.planets);
-    // searchEvent();
+    searchEvent(data2.planets);
 }
 
 const xhrDos = () => {
@@ -146,10 +148,9 @@ function fileError() {
 
 function fileLoaded() {
     const data = JSON.parse(this.responseText);
-    console.log("Find 'is': ", filterResults(data.planets, "is"));
     buildSolarSystem(data.planets);
     hoverPlanet();
-    // searchEvent();
+    searchEvent(data.planets);
 }
 
 const startApplication = () => {
