@@ -6,7 +6,7 @@ const printToDom = (divID, string) => {
 
 const dwarfPlanet = (nameOfPlanet, index) => {
     domString = `<div class="card" id="${index}">`;
-    domString +=    `<h3 class="planetName">${nameOfPlanet.name}</h3>`;
+    domString +=    `<h2 class="planetName">${nameOfPlanet.name}</h2>`;
     domString +=    `<img class="hidden" src="${nameOfPlanet.imageUrl}">`;
     domString += `</div>`;
     return domString;
@@ -25,17 +25,17 @@ const buildSolarSystem = (planetArray) => {
 
 const buildPlanet = (array, index) => {
     let domString = '';
-        domString += `<div>`;
+        domString += `<div class="single-planet">`;
         domString +=    `<img id="red-x" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Antu_task-reject.svg/512px-Antu_task-reject.svg.png">`;
         domString +=    `<h1>${array[index].name}</h1>`;
         domString +=    `<img src="${array[index].imageUrl}">`;
-        domString +=    `<p>${array[index].description}</p>`;
-        domString +=    `<h5>Number of Moons: ${array[index].numberOfMoons}</h5>`;
-        domString +=    `<h5>Name of Largest Moon: `;
+        domString +=    `<h4>${array[index].description}</h4>`;
+        domString +=    `<h4>Number of Moons: ${array[index].numberOfMoons}</h4>`;
+        domString +=    `<h4>Name of Largest Moon: `;
         if(array[index].nameOfLargestMoon === ""){
-            domString += `This planet has no moons</h5>`;
+            domString += `This planet has no moons</h4>`;
         } else {
-            domString += `${array[index].nameOfLargestMoon}</h5>`
+            domString += `${array[index].nameOfLargestMoon}</h4>`
         };
         domString += `</div>`;
     printToDom("milky-way", domString);
@@ -87,7 +87,7 @@ const clickPlanet = (array) => {
 
 const killPlanet = () => {
     const getX = document.getElementById("red-x");
-    getX.addEventListener('click', startApplication);
+    getX.addEventListener('click', runAll);
 };
 
 // ************************ Search Bar ********************
@@ -113,16 +113,16 @@ const searchEvent = (array) => {
 //     console.log("userInput: ", userInput);
 // };
 
-const filterResults = (array, searchKey) => {
-    return array.filter((obj) => {
-      return Object.keys(obj).some((key) => {
-        if (typeof obj[key] === 'string') {
-            let returned = obj[key].toLowerCase().includes(searchKey.toLowerCase());
-            console.log(returned);
-        }
-      })
-    });
-  } 
+// const filterResults = (array, searchKey) => {
+//     return array.filter((obj) => {
+//       return Object.keys(obj).some((key) => {
+//         if (typeof obj[key] === 'string') {
+//             let returned = obj[key].toLowerCase().includes(searchKey.toLowerCase());
+//             console.log(returned);
+//         }
+//       })
+//     });
+//   } 
 
 // ************************ Second XHR Request *****************
 
@@ -161,5 +161,9 @@ const startApplication = () => {
     myRequest.send();
 }
 
-startApplication();
-xhrDos();
+const runAll = () => {
+    startApplication();
+    xhrDos();
+};
+
+runAll();
