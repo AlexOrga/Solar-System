@@ -95,41 +95,33 @@ const killPlanet = () => {
 const searchEvent = (array) => {
     let getSearch = document.getElementById("search-bar");
     getSearch.addEventListener('keypress', function (e) {
-        var key = e.which || e.keyCode;
+        const key = e.which || e.keyCode;
         if (key === 13) { 
             getSearch = getSearch.value;
-            filterResults(array, getSearch);
+            const returned = filterResults(array, getSearch);
+            buildSolarSystem(returned);
+            clickPlanet(returned);
+            hoverPlanet();
         }
     });
 };
 
-// const searchBar = (array) => {
-//     const dataToCompare = array;
-//     let userInput = document.getElementById("search-bar").value;
-//     userInput = userInput.split(' ');
-//     userInput.forEach((input) => {
-//         filterResults(dataToCompare, userInput);
-//     });
-//     console.log("userInput: ", userInput);
-// };
-
-// const filterResults = (array, searchKey) => {
-//     return array.filter((obj) => {
-//       return Object.keys(obj).some((key) => {
-//         if (typeof obj[key] === 'string') {
-//             let returned = obj[key].toLowerCase().includes(searchKey.toLowerCase());
-//             console.log(returned);
-//         }
-//       })
-//     });
-//   } 
+const filterResults = (array, searchKey) => {
+    return array.filter((obj) => {
+      return Object.keys(obj).some((key) => {
+        if (typeof obj[key] === 'string') {
+            let returned = obj[key].toLowerCase().includes(searchKey.toLowerCase());
+                return returned;
+        }
+      })
+    });
+  } 
 
 // ************************ Second XHR Request *****************
 
 function fileLoaded2 () {
     const data2 = JSON.parse(this.responseText);
     clickPlanet(data2.planets);
-    searchEvent(data2.planets);
 }
 
 const xhrDos = () => {
@@ -151,6 +143,7 @@ function fileLoaded() {
     buildSolarSystem(data.planets);
     hoverPlanet();
     searchEvent(data.planets);
+    filterResults(data.planets, "venus");
 }
 
 const startApplication = () => {
