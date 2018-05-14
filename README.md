@@ -6,6 +6,12 @@ An application which displays all of the planet names in our solarsystem and as 
 
 # Screen Shots
 
+![Webpage](https://raw.githubusercontent.com/AlexOrga/Solar-System/master/screenshots/SolarSystem.png)
+
+![Webpage](https://raw.githubusercontent.com/AlexOrga/Solar-System/master/screenshots/SolarSystem2.png)
+
+![Webpage](https://raw.githubusercontent.com/AlexOrga/Solar-System/master/screenshots/SolarSystem3.png)
+
 # How To Run
 
 - Requires Node.js
